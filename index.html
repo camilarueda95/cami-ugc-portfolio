@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cami — Portafolio UGC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +90,7 @@
   a{ color:inherit; }
 
   .eyebrow{
-    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-family:"Special Elite", "Courier New", monospace;
     font-size:0.72rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -129,6 +134,22 @@
     transition:right .25s ease;
   }
   .navlinks a:hover::after, .navlinks a:focus-visible::after{ right:0; }
+
+  .nav-actions{ display:flex; align-items:center; gap:18px; }
+
+  .lang-toggle{
+    font-family:"Special Elite", "Courier New", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--ink);
+    color:var(--ink);
+    padding:2px 0;
+    cursor:pointer;
+  }
+  .lang-toggle:hover{ color:var(--accent); border-color:var(--accent); }
 
   .btn{
     font-family:"Special Elite", "Courier New", monospace;
@@ -374,16 +395,21 @@
     .step::after{ display:none; }
   }
 </style>
+</head>
+<body>
 
 <header>
   <nav class="wrap">
     <div class="navlinks">
-      <a href="#portafolio">Trabajos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#portafolio" data-i18n="navWork">Trabajos</a>
+      <a href="#servicios" data-i18n="navServices">Servicios</a>
+      <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+      <a href="#contacto" data-i18n="navContact">Contacto</a>
     </div>
-    <a class="btn solid" href="#contacto">Trabajemos</a>
+    <div class="nav-actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+      <a class="btn solid" href="#contacto" data-i18n="navCta">Trabajemos</a>
+    </div>
   </nav>
 </header>
 
@@ -392,14 +418,14 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Creadora UGC — moda · belleza · lifestyle</p>
-        <h1 class="hero-head">Contenido que<br>se ve real, <i class="acc">porque lo es.</i></h1>
+        <p class="eyebrow" data-i18n="heroEyebrow">Creadora UGC — moda · belleza · lifestyle</p>
+        <h1 class="hero-head" data-i18n="heroHead">Contenido que<br>se ve real, <i class="acc">porque lo es.</i></h1>
         <div class="hero-copy">
-          <p>Soy Cami: grabo videos y fotos de producto que tus clientas ven como la recomendación de una amiga, no como publicidad. Trabajo con marcas de moda, belleza y estilo de vida que quieren contenido honesto para redes y para pauta.</p>
+          <p data-i18n="heroCopy">Soy Cami: grabo videos y fotos de producto que tus clientas ven como la recomendación de una amiga, no como publicidad. Trabajo con marcas de moda, belleza y estilo de vida que quieren contenido honesto para redes y para pauta.</p>
         </div>
         <div class="hero-ctas">
-          <a class="btn solid" href="#portafolio">Ver portafolio</a>
-          <a class="arrow-link" href="#contacto">Escríbeme →</a>
+          <a class="btn solid" href="#portafolio" data-i18n="ctaPortfolio">Ver portafolio</a>
+          <a class="arrow-link" href="#contacto" data-i18n="ctaWrite">Escríbeme →</a>
         </div>
       </div>
       <div>
@@ -410,7 +436,7 @@
         </div>
         <div class="frame-caption">
           <span>Cami, 2026</span>
-          <span class="stamp">Disponible</span>
+          <span class="stamp" data-i18n="frameAvailable">Disponible</span>
         </div>
       </div>
     </div>
@@ -418,16 +444,16 @@
 
   <div class="strip" aria-hidden="true">
     <div class="strip-track">
-      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span>Reseñas</span><span>UGC para ads</span>
-      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span>Reseñas</span><span>UGC para ads</span>
+      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span data-i18n="stripReviews">Reseñas</span><span data-i18n="stripAds">UGC para ads</span>
+      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span data-i18n="stripReviews">Reseñas</span><span data-i18n="stripAds">UGC para ads</span>
     </div>
   </div>
 
   <section id="portafolio">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Seis tomas de<br>lo último que grabé.</h2>
-        <p class="sec-note">Un vistazo al tipo de contenido que hago — cada plate se reemplaza por tus videos reales.</p>
+        <h2 data-i18n="portTitle">Seis tomas de<br>lo último que grabé.</h2>
+        <p class="sec-note" data-i18n="portNote">Un vistazo al tipo de contenido que hago — cada plate se reemplaza por tus videos reales.</p>
       </div>
 
       <div class="plates">
@@ -435,39 +461,39 @@
           <div class="art"></div>
           <div class="content"><span class="num">01</span></div>
           <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
-          <div class="content bottom"><span class="fmt">Reel · Skincare</span><h3>GRWM con rutina</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p1fmt">Reel · Skincare</span><h3 data-i18n="p1h">GRWM con rutina</h3></div>
         </article>
         <article class="plate p2">
           <div class="art"></div>
           <div class="content"><span class="num">02</span></div>
           <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
-          <div class="content bottom"><span class="fmt">TikTok · Moda</span><h3>Try-on haul</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p2fmt">TikTok · Moda</span><h3 data-i18n="p2h">Try-on haul</h3></div>
         </article>
         <article class="plate p3">
           <div class="art"></div>
           <div class="content"><span class="num">03</span></div>
           <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
-          <div class="content bottom"><span class="fmt">Reel · Beauty box</span><h3>Unboxing</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p3fmt">Reel · Beauty box</span><h3 data-i18n="p3h">Unboxing</h3></div>
         </article>
         <article class="plate p4">
           <div class="art"></div>
           <div class="content"><span class="num">04</span></div>
-          <div class="content bottom"><span class="fmt">Foto · Producto</span><h3>Flat lay</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p4fmt">Foto · Producto</span><h3 data-i18n="p4h">Flat lay</h3></div>
         </article>
         <article class="plate p5">
           <div class="art"></div>
           <div class="content"><span class="num">05</span></div>
           <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
-          <div class="content bottom"><span class="fmt">TikTok · Reseña</span><h3>Testimonio honesto</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p5fmt">TikTok · Reseña</span><h3 data-i18n="p5h">Testimonio honesto</h3></div>
         </article>
         <article class="plate p6">
           <div class="art"></div>
           <div class="content"><span class="num">06</span></div>
           <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
-          <div class="content bottom"><span class="fmt">Reel · Lifestyle</span><h3>Día en mi vida</h3></div>
+          <div class="content bottom"><span class="fmt" data-i18n="p6fmt">Reel · Lifestyle</span><h3 data-i18n="p6h">Día en mi vida</h3></div>
         </article>
       </div>
-      <p class="portfolio-note">*Espacios de muestra — se reemplazan por tus videos y fotos finales.</p>
+      <p class="portfolio-note" data-i18n="portfolioNote2">*Espacios de muestra — se reemplazan por tus videos y fotos finales.</p>
     </div>
   </section>
 
@@ -478,16 +504,16 @@
         <span class="crop bl"></span><span class="crop br"></span>
       </div>
       <div>
-        <p class="eyebrow">Sobre mí</p>
-        <p class="quote">Antes de la cámara siempre hay una historia real que contar.</p>
+        <p class="eyebrow" data-i18n="aboutEyebrow">Sobre mí</p>
+        <p class="quote" data-i18n="aboutQuote">Antes de la cámara siempre hay una historia real que contar.</p>
         <div class="about-body">
-          <p>Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".</p>
-          <p>Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.</p>
+          <p data-i18n="aboutP1">Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".</p>
+          <p data-i18n="aboutP2">Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.</p>
         </div>
         <div class="traits">
-          <div class="trait"><span class="mk">→</span> Gancho en los primeros 2 segundos, siempre.</div>
-          <div class="trait"><span class="mk">→</span> Luz natural, edición limpia, cero filtros pesados.</div>
-          <div class="trait"><span class="mk">→</span> Entrega en formato listo para subir, sin ida y vuelta eterno.</div>
+          <div class="trait"><span class="mk">→</span> <span data-i18n="trait1">Gancho en los primeros 2 segundos, siempre.</span></div>
+          <div class="trait"><span class="mk">→</span> <span data-i18n="trait2">Luz natural, edición limpia, cero filtros pesados.</span></div>
+          <div class="trait"><span class="mk">→</span> <span data-i18n="trait3">Entrega en formato listo para subir, sin ida y vuelta eterno.</span></div>
         </div>
       </div>
     </div>
@@ -496,29 +522,29 @@
   <section id="servicios">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Lo que puedo<br>grabar para tu marca.</h2>
-        <p class="sec-note">Cuatro formatos base — se ajustan al brief y al objetivo de cada campaña.</p>
+        <h2 data-i18n="servicesTitle">Lo que puedo<br>grabar para tu marca.</h2>
+        <p class="sec-note" data-i18n="servicesNote">Cuatro formatos base — se ajustan al brief y al objetivo de cada campaña.</p>
       </div>
       <div class="services">
         <div class="service-row">
           <span class="idx">01</span>
-          <h3>Video UGC</h3>
-          <p>Reels y TikToks verticales con guion y gancho pensados para tu producto, listos para publicar o usar en pauta.</p>
+          <h3 data-i18n="s1h">Video UGC</h3>
+          <p data-i18n="s1p">Reels y TikToks verticales con guion y gancho pensados para tu producto, listos para publicar o usar en pauta.</p>
         </div>
         <div class="service-row">
           <span class="idx">02</span>
-          <h3>Fotografía de producto</h3>
-          <p>Flat lays y fotos en contexto de uso, editadas para feed, ecommerce o ficha de producto.</p>
+          <h3 data-i18n="s2h">Fotografía de producto</h3>
+          <p data-i18n="s2p">Flat lays y fotos en contexto de uso, editadas para feed, ecommerce o ficha de producto.</p>
         </div>
         <div class="service-row">
           <span class="idx">03</span>
-          <h3>Unboxing &amp; reseñas</h3>
-          <p>Reacción real al abrir y probar tu producto — formato cercano, sin guion forzado.</p>
+          <h3 data-i18n="s3h">Unboxing &amp; reseñas</h3>
+          <p data-i18n="s3p">Reacción real al abrir y probar tu producto — formato cercano, sin guion forzado.</p>
         </div>
         <div class="service-row">
           <span class="idx">04</span>
-          <h3>Contenido para ads</h3>
-          <p>Piezas pensadas para performance y whitelisting: hook, beneficio claro, cierre con CTA.</p>
+          <h3 data-i18n="s4h">Contenido para ads</h3>
+          <p data-i18n="s4p">Piezas pensadas para performance y whitelisting: hook, beneficio claro, cierre con CTA.</p>
         </div>
       </div>
     </div>
@@ -527,22 +553,22 @@
   <section style="background:var(--paper-alt)">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Cómo<br>trabajamos.</h2>
-        <p class="sec-note">Cuatro pasos, del brief a los archivos finales en tu carpeta.</p>
+        <h2 data-i18n="processTitle">Cómo<br>trabajamos.</h2>
+        <p class="sec-note" data-i18n="processNote">Cuatro pasos, del brief a los archivos finales en tu carpeta.</p>
       </div>
       <div class="process">
-        <div class="step"><span class="idx">01</span><h3>Brief</h3><p>Me cuentas tu marca, el producto y el objetivo del contenido.</p></div>
-        <div class="step"><span class="idx">02</span><h3>Propuesta</h3><p>Te envío ideas de guion y referencias antes de grabar.</p></div>
-        <div class="step"><span class="idx">03</span><h3>Grabación</h3><p>Grabo con buena luz, en casa o donde mejor se vea tu producto.</p></div>
-        <div class="step"><span class="idx">04</span><h3>Entrega</h3><p>Recibes los archivos editados, listos para subir o pautar.</p></div>
+        <div class="step"><span class="idx">01</span><h3 data-i18n="st1h">Brief</h3><p data-i18n="st1p">Me cuentas tu marca, el producto y el objetivo del contenido.</p></div>
+        <div class="step"><span class="idx">02</span><h3 data-i18n="st2h">Propuesta</h3><p data-i18n="st2p">Te envío ideas de guion y referencias antes de grabar.</p></div>
+        <div class="step"><span class="idx">03</span><h3 data-i18n="st3h">Grabación</h3><p data-i18n="st3p">Grabo con buena luz, en casa o donde mejor se vea tu producto.</p></div>
+        <div class="step"><span class="idx">04</span><h3 data-i18n="st4h">Entrega</h3><p data-i18n="st4p">Recibes los archivos editados, listos para subir o pautar.</p></div>
       </div>
     </div>
   </section>
 
   <section id="contacto" class="contact">
     <div class="wrap">
-      <p class="eyebrow">Contacto</p>
-      <h2>¿Hacemos<br>contenido juntas?</h2>
+      <p class="eyebrow" data-i18n="contactEyebrow">Contacto</p>
+      <h2 data-i18n="contactTitle">¿Hacemos<br>contenido juntas?</h2>
       <div class="contact-grid">
         <a class="mail" href="mailto:info@cammirueda.com">info@cammirueda.com</a>
         <div class="socials">
@@ -557,7 +583,137 @@
 
 <footer>
   <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
-    <span>© 2026 Cami — Creadora UGC</span>
-    <span>Moda · Belleza · Lifestyle</span>
+    <span data-i18n="footerLeft">© 2026 Cami — Creadora UGC</span>
+    <span data-i18n="footerRight">Moda · Belleza · Lifestyle</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var translations = {
+    es: {
+      pageTitle: "Cami — Portafolio UGC",
+      navWork: "Trabajos",
+      navServices: "Servicios",
+      navAbout: "Sobre mí",
+      navContact: "Contacto",
+      navCta: "Trabajemos",
+      heroEyebrow: "Creadora UGC — moda · belleza · lifestyle",
+      heroHead: `Contenido que<br>se ve real, <i class="acc">porque lo es.</i>`,
+      heroCopy: "Soy Cami: grabo videos y fotos de producto que tus clientas ven como la recomendación de una amiga, no como publicidad. Trabajo con marcas de moda, belleza y estilo de vida que quieren contenido honesto para redes y para pauta.",
+      ctaPortfolio: "Ver portafolio",
+      ctaWrite: "Escríbeme →",
+      frameAvailable: "Disponible",
+      stripReviews: "Reseñas",
+      stripAds: "UGC para ads",
+      portTitle: `Seis tomas de<br>lo último que grabé.`,
+      portNote: "Un vistazo al tipo de contenido que hago — cada plate se reemplaza por tus videos reales.",
+      p1fmt: "Reel · Skincare", p1h: "GRWM con rutina",
+      p2fmt: "TikTok · Moda", p2h: "Try-on haul",
+      p3fmt: "Reel · Beauty box", p3h: "Unboxing",
+      p4fmt: "Foto · Producto", p4h: "Flat lay",
+      p5fmt: "TikTok · Reseña", p5h: "Testimonio honesto",
+      p6fmt: "Reel · Lifestyle", p6h: "Día en mi vida",
+      portfolioNote2: "*Espacios de muestra — se reemplazan por tus videos y fotos finales.",
+      aboutEyebrow: "Sobre mí",
+      aboutQuote: "Antes de la cámara siempre hay una historia real que contar.",
+      aboutP1: `Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".`,
+      aboutP2: "Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.",
+      trait1: "Gancho en los primeros 2 segundos, siempre.",
+      trait2: "Luz natural, edición limpia, cero filtros pesados.",
+      trait3: "Entrega en formato listo para subir, sin ida y vuelta eterno.",
+      servicesTitle: `Lo que puedo<br>grabar para tu marca.`,
+      servicesNote: "Cuatro formatos base — se ajustan al brief y al objetivo de cada campaña.",
+      s1h: "Video UGC", s1p: "Reels y TikToks verticales con guion y gancho pensados para tu producto, listos para publicar o usar en pauta.",
+      s2h: "Fotografía de producto", s2p: "Flat lays y fotos en contexto de uso, editadas para feed, ecommerce o ficha de producto.",
+      s3h: "Unboxing &amp; reseñas", s3p: "Reacción real al abrir y probar tu producto — formato cercano, sin guion forzado.",
+      s4h: "Contenido para ads", s4p: "Piezas pensadas para performance y whitelisting: hook, beneficio claro, cierre con CTA.",
+      processTitle: `Cómo<br>trabajamos.`,
+      processNote: "Cuatro pasos, del brief a los archivos finales en tu carpeta.",
+      st1h: "Brief", st1p: "Me cuentas tu marca, el producto y el objetivo del contenido.",
+      st2h: "Propuesta", st2p: "Te envío ideas de guion y referencias antes de grabar.",
+      st3h: "Grabación", st3p: "Grabo con buena luz, en casa o donde mejor se vea tu producto.",
+      st4h: "Entrega", st4p: "Recibes los archivos editados, listos para subir o pautar.",
+      contactEyebrow: "Contacto",
+      contactTitle: `¿Hacemos<br>contenido juntas?`,
+      footerLeft: "© 2026 Cami — Creadora UGC",
+      footerRight: "Moda · Belleza · Lifestyle",
+      langToggle: "EN"
+    },
+    en: {
+      pageTitle: "Cami — UGC Portfolio",
+      navWork: "Work",
+      navServices: "Services",
+      navAbout: "About",
+      navContact: "Contact",
+      navCta: "Let's work together",
+      heroEyebrow: "UGC Creator — fashion · beauty · lifestyle",
+      heroHead: `Content that<br>looks real, <i class="acc">because it is.</i>`,
+      heroCopy: "I'm Cami: I shoot product videos and photos that your customers see as a friend's recommendation, not an ad. I work with fashion, beauty and lifestyle brands that want honest content for social and for paid media.",
+      ctaPortfolio: "View portfolio",
+      ctaWrite: "Message me →",
+      frameAvailable: "Available",
+      stripReviews: "Reviews",
+      stripAds: "UGC for ads",
+      portTitle: `Six shots from<br>my latest work.`,
+      portNote: "A glimpse of the kind of content I make — every plate gets swapped for your real videos.",
+      p1fmt: "Reel · Skincare", p1h: "GRWM routine",
+      p2fmt: "TikTok · Fashion", p2h: "Try-on haul",
+      p3fmt: "Reel · Beauty box", p3h: "Unboxing",
+      p4fmt: "Photo · Product", p4h: "Flat lay",
+      p5fmt: "TikTok · Review", p5h: "Honest testimonial",
+      p6fmt: "Reel · Lifestyle", p6h: "Day in my life",
+      portfolioNote2: "*Sample placeholders — swapped out for your final videos and photos.",
+      aboutEyebrow: "About me",
+      aboutQuote: "Before the camera, there's always a real story to tell.",
+      aboutP1: `I'm Cami. I create content for fashion, beauty and lifestyle brands, and what I love most is finding the honest moment inside every product: the texture, the real reaction, the detail that makes someone think "I want that too".`,
+      aboutP2: "I work directly with brands or inside paid UGC campaigns, and deliver content ready to post — vertical, well lit, no filler.",
+      trait1: "A hook in the first 2 seconds, always.",
+      trait2: "Natural light, clean editing, zero heavy filters.",
+      trait3: "Delivered ready to upload — no endless back-and-forth.",
+      servicesTitle: `What I can<br>shoot for your brand.`,
+      servicesNote: "Four base formats — adjusted to the brief and goal of each campaign.",
+      s1h: "UGC video", s1p: "Vertical Reels and TikToks with a script and hook built for your product, ready to post or run as ads.",
+      s2h: "Product photography", s2p: "Flat lays and in-context shots, edited for feed, ecommerce or product pages.",
+      s3h: "Unboxing &amp; reviews", s3p: "Real reaction to opening and trying your product — close, unscripted format.",
+      s4h: "Content for ads", s4p: "Pieces built for performance and whitelisting: hook, clear benefit, close with a CTA.",
+      processTitle: `How<br>we work.`,
+      processNote: "Four steps, from the brief to the final files in your folder.",
+      st1h: "Brief", st1p: "You tell me about your brand, the product and the goal of the content.",
+      st2h: "Proposal", st2p: "I send script ideas and references before we shoot.",
+      st3h: "Filming", st3p: "I shoot with good light, at home or wherever your product looks best.",
+      st4h: "Delivery", st4p: "You get the edited files, ready to post or run as ads.",
+      contactEyebrow: "Contact",
+      contactTitle: `Shall we make<br>content together?`,
+      footerLeft: "© 2026 Cami — UGC Creator",
+      footerRight: "Fashion · Beauty · Lifestyle",
+      langToggle: "ES"
+    }
+  };
+
+  function applyLang(lang){
+    var dict = translations[lang];
+    document.documentElement.setAttribute("lang", lang);
+    document.title = dict.pageTitle;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key = el.getAttribute("data-i18n");
+      if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+    });
+    var toggle = document.getElementById("lang-toggle");
+    toggle.textContent = dict.langToggle;
+    toggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
+    try{ localStorage.setItem("cami-portfolio-lang", lang); }catch(e){}
+  }
+
+  var current = "es";
+  try{ current = localStorage.getItem("cami-portfolio-lang") || "es"; }catch(e){}
+  applyLang(current);
+
+  document.getElementById("lang-toggle").addEventListener("click", function(){
+    current = current === "es" ? "en" : "es";
+    applyLang(current);
+  });
+})();
+</script>
+</body>
+</html>
