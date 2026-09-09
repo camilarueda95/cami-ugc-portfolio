@@ -1,0 +1,563 @@
+<title>Cami — Portafolio UGC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:      #F1F2EA;
+    --paper-alt:  #E6E5D9;
+    --ink:        #1C1B17;
+    --ink-soft:   #57544C;
+    --line:       rgba(28,27,23,0.16);
+    --accent:     #3E4A33;
+    --accent-ink: #EAF0E2;
+    --accent-soft:#DDE3D0;
+    --clay:       #C79A7C;
+    --clay-soft:  #EFE1D2;
+    --shadow:     rgba(28,27,23,0.10);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:      #16150F;
+      --paper-alt:  #201F17;
+      --ink:        #EEEAE0;
+      --ink-soft:   #B6B0A2;
+      --line:       rgba(238,234,224,0.16);
+      --accent:     #93B27E;
+      --accent-ink: #171C12;
+      --accent-soft:#26301E;
+      --clay:       #D9AE8A;
+      --clay-soft:  #2B241C;
+      --shadow:     rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:      #16150F;
+    --paper-alt:  #201F17;
+    --ink:        #EEEAE0;
+    --ink-soft:   #B6B0A2;
+    --line:       rgba(238,234,224,0.16);
+    --accent:     #93B27E;
+    --accent-ink: #171C12;
+    --accent-soft:#26301E;
+    --clay:       #D9AE8A;
+    --clay-soft:  #2B241C;
+    --shadow:     rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+
+  .wrap{
+    max-width:1220px;
+    margin:0 auto;
+    padding:0 clamp(20px, 4vw, 56px);
+  }
+
+  h1,h2,h3{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:700;
+    margin:0;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+
+  em, i.acc{
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  a{ color:inherit; }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    background:var(--accent);
+    display:inline-block;
+    flex:none;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .navlinks{
+    display:flex; gap:34px;
+    font-size:0.92rem;
+  }
+  .navlinks a{
+    text-decoration:none;
+    position:relative;
+    padding-bottom:3px;
+  }
+  .navlinks a::after{
+    content:"";
+    position:absolute; left:0; right:100%; bottom:0;
+    height:1px; background:var(--accent);
+    transition:right .25s ease;
+  }
+  .navlinks a:hover::after, .navlinks a:focus-visible::after{ right:0; }
+
+  .btn{
+    font-family:"Special Elite", "Courier New", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    background:transparent;
+    cursor:pointer;
+  }
+  .btn:hover{ background:var(--ink); color:var(--paper); }
+  .btn.solid{ background:var(--ink); color:var(--paper); }
+  .btn.solid:hover{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .btn:focus-visible, a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 40px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:clamp(28px,5vw,64px);
+    align-items:end;
+  }
+  .hero-head{ font-size:clamp(2.7rem, 5.6vw, 5rem); line-height:0.98; margin:18px 0 22px; }
+  .hero-copy p{
+    max-width:46ch; color:var(--ink-soft); font-size:1.05rem; line-height:1.65;
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-top:26px; flex-wrap:wrap; }
+  .arrow-link{
+    text-decoration:none; font-family:"Special Elite", "Courier New", monospace; font-size:0.82rem;
+    letter-spacing:.03em; text-transform:uppercase; border-bottom:1px solid var(--ink);
+    padding-bottom:2px; align-self:center;
+  }
+
+  .frame{
+    position:relative;
+    aspect-ratio:4/5;
+    background:
+      radial-gradient(120% 140% at 20% 0%, color-mix(in srgb, var(--accent) 55%, var(--paper)) 0%, transparent 55%),
+      linear-gradient(160deg, var(--clay-soft) 0%, var(--paper-alt) 55%, var(--accent-soft) 100%);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .frame .mono{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:700;
+    font-size:8rem;
+    color:color-mix(in srgb, var(--ink) 22%, transparent);
+    -webkit-text-stroke:1.5px color-mix(in srgb, var(--ink) 45%, transparent);
+  }
+  .crop{
+    position:absolute; width:16px; height:16px; border-color:var(--ink);
+  }
+  .crop.tl{ top:12px; left:12px; border-top:1px solid; border-left:1px solid; }
+  .crop.tr{ top:12px; right:12px; border-top:1px solid; border-right:1px solid; }
+  .crop.bl{ bottom:12px; left:12px; border-bottom:1px solid; border-left:1px solid; }
+  .crop.br{ bottom:12px; right:12px; border-bottom:1px solid; border-right:1px solid; }
+
+  .frame-caption{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top:12px; font-family:"Special Elite", "Courier New", monospace; font-size:0.72rem;
+    letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase;
+  }
+  .stamp{
+    border:1px solid var(--accent); color:var(--accent);
+    padding:3px 8px; transform:rotate(-2deg);
+  }
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    overflow:hidden; white-space:nowrap; padding:14px 0;
+    background:var(--paper-alt);
+  }
+  .strip-track{
+    display:inline-flex; gap:28px;
+    font-family:"Special Elite", "Courier New", monospace; font-size:0.8rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);
+    animation:scroll 34s linear infinite;
+  }
+  .strip-track span{ display:inline-flex; align-items:center; gap:28px; }
+  .strip-track span::after{ content:"—"; color:var(--clay); }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:96px 0; }
+  .sec-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:52px; border-bottom:1px solid var(--line); padding-bottom:26px;
+  }
+  .sec-head h2{ font-size:clamp(2rem,3.4vw,2.9rem); }
+  .sec-note{ max-width:32ch; color:var(--ink-soft); font-size:0.92rem; text-align:right; }
+
+  /* ---------- PORTFOLIO ---------- */
+  .plates{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .plate{
+    background:var(--paper); position:relative; aspect-ratio:3/4;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:16px;
+  }
+  .plate .num{
+    font-family:"Special Elite", "Courier New", monospace; font-size:0.75rem; color:var(--ink-soft);
+  }
+  .plate .art{
+    position:absolute; inset:0; z-index:0;
+  }
+  .plate .content{ position:relative; z-index:1; }
+  .plate .content.bottom{ }
+  .plate .fmt{
+    font-family:"Special Elite", "Courier New", monospace; font-size:0.68rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .plate h3{ font-size:1.4rem; margin-top:4px; }
+  .play{
+    position:absolute; top:16px; right:16px; z-index:1;
+    width:34px; height:34px; border:1px solid var(--ink); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:color-mix(in srgb, var(--paper) 55%, transparent);
+  }
+  .play svg{ width:11px; height:11px; }
+
+  .p1 .art{ background:linear-gradient(155deg, var(--clay-soft), var(--accent-soft)); }
+  .p2 .art{ background:linear-gradient(155deg, var(--accent-soft), var(--paper-alt)); }
+  .p3 .art{ background:linear-gradient(155deg, var(--paper-alt), var(--clay-soft)); }
+  .p4 .art{ background:linear-gradient(200deg, var(--clay-soft), var(--paper-alt)); }
+  .p5 .art{ background:linear-gradient(200deg, var(--accent-soft), var(--clay-soft)); }
+  .p6 .art{ background:linear-gradient(200deg, var(--paper-alt), var(--accent-soft)); }
+
+  .portfolio-note{ margin-top:18px; font-size:0.85rem; color:var(--ink-soft); font-style:italic; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.7fr 1.3fr; gap:clamp(28px,5vw,72px);
+    align-items:start;
+  }
+  .about-photo{
+    aspect-ratio:3/4;
+    background:linear-gradient(165deg, var(--accent-soft), var(--paper-alt));
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .quote{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:700;
+    font-size:clamp(1.5rem,2.6vw,2.1rem);
+    line-height:1.3; margin-bottom:26px;
+  }
+  .about-body p{ color:var(--ink-soft); max-width:62ch; margin:0 0 16px; }
+  .traits{
+    margin-top:32px; display:grid; gap:14px;
+    border-top:1px solid var(--line); padding-top:26px;
+  }
+  .trait{ display:flex; gap:16px; align-items:baseline; font-size:0.95rem; }
+  .trait .mk{ font-family:"Special Elite", "Courier New", monospace; color:var(--accent); font-size:0.8rem; }
+
+  /* ---------- SERVICES ---------- */
+  .service-row{
+    display:grid; grid-template-columns:64px 1.1fr 1.4fr;
+    gap:24px; padding:28px 0; border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .services .service-row:last-child{ border-bottom:1px solid var(--line); }
+  .service-row .idx{ font-family:"Special Elite", "Courier New", monospace; color:var(--clay); font-size:0.9rem; }
+  .service-row h3{ font-size:1.6rem; }
+  .service-row p{ margin:0; color:var(--ink-soft); font-size:0.95rem; max-width:52ch; }
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  }
+  .step{
+    padding:0 22px 0 0; position:relative;
+  }
+  .step:not(:last-child)::after{
+    content:""; position:absolute; top:14px; right:0; width:100%; height:1px;
+    background:var(--line);
+  }
+  .step .idx{
+    font-family:"Special Elite", "Courier New", monospace; font-size:2.1rem; color:var(--accent);
+    display:block; margin-bottom:14px;
+  }
+  .step h3{ font-size:1.15rem; font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; font-weight:700; margin-bottom:8px; }
+  .step p{ font-size:0.9rem; color:var(--ink-soft); margin:0; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--ink); color:var(--paper);
+  }
+  .contact .eyebrow{ color:color-mix(in srgb, var(--paper) 65%, transparent); }
+  .contact .eyebrow::before{ background:var(--clay); }
+  .contact h2{
+    font-size:clamp(2.4rem,6vw,5rem); margin:20px 0 30px; text-wrap:balance;
+  }
+  .contact-grid{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+  .mail{
+    font-family:"Special Elite", "Courier New", monospace; font-size:clamp(1.4rem,2.8vw,2.1rem);
+    text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--paper) 45%, transparent);
+  }
+  .socials{
+    display:flex; gap:22px; font-family:"Special Elite", "Courier New", monospace; font-size:0.82rem;
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+  .socials a{ text-decoration:none; opacity:.85; }
+  .socials a:hover{ opacity:1; color:var(--clay); }
+
+  footer{
+    background:var(--ink); color:color-mix(in srgb, var(--paper) 55%, transparent);
+    font-family:"Special Elite", "Courier New", monospace; font-size:0.74rem;
+    padding:22px 0 30px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    border-top:1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  }
+
+  @media (max-width: 880px){
+    .navlinks{ display:none; }
+    nav.wrap{ justify-content:flex-end; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .frame{ order:-1; max-width:340px; }
+    .plates{ grid-template-columns:repeat(2,1fr); }
+    .about-grid{ grid-template-columns:1fr; }
+    .about-photo{ max-width:300px; }
+    .service-row{ grid-template-columns:40px 1fr; }
+    .service-row p{ grid-column:2 / -1; }
+    .process{ grid-template-columns:1fr 1fr; row-gap:32px; }
+    .step:nth-child(2)::after{ display:none; }
+    .sec-head{ flex-direction:column; align-items:flex-start; }
+    .sec-note{ text-align:left; }
+  }
+  @media (max-width: 560px){
+    .plates{ grid-template-columns:1fr; }
+    .process{ grid-template-columns:1fr; }
+    .step::after{ display:none; }
+  }
+</style>
+
+<header>
+  <nav class="wrap">
+    <div class="navlinks">
+      <a href="#portafolio">Trabajos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="btn solid" href="#contacto">Trabajemos</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Creadora UGC — moda · belleza · lifestyle</p>
+        <h1 class="hero-head">Contenido que<br>se ve real, <i class="acc">porque lo es.</i></h1>
+        <div class="hero-copy">
+          <p>Soy Cami: grabo videos y fotos de producto que tus clientas ven como la recomendación de una amiga, no como publicidad. Trabajo con marcas de moda, belleza y estilo de vida que quieren contenido honesto para redes y para pauta.</p>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn solid" href="#portafolio">Ver portafolio</a>
+          <a class="arrow-link" href="#contacto">Escríbeme →</a>
+        </div>
+      </div>
+      <div>
+        <div class="frame">
+          <span class="crop tl"></span><span class="crop tr"></span>
+          <span class="crop bl"></span><span class="crop br"></span>
+          <span class="mono">C</span>
+        </div>
+        <div class="frame-caption">
+          <span>Cami, 2026</span>
+          <span class="stamp">Disponible</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span>Reseñas</span><span>UGC para ads</span>
+      <span>Reels</span><span>TikTok</span><span>Unboxing</span><span>GRWM</span><span>Reseñas</span><span>UGC para ads</span>
+    </div>
+  </div>
+
+  <section id="portafolio">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Seis tomas de<br>lo último que grabé.</h2>
+        <p class="sec-note">Un vistazo al tipo de contenido que hago — cada plate se reemplaza por tus videos reales.</p>
+      </div>
+
+      <div class="plates">
+        <article class="plate p1">
+          <div class="art"></div>
+          <div class="content"><span class="num">01</span></div>
+          <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
+          <div class="content bottom"><span class="fmt">Reel · Skincare</span><h3>GRWM con rutina</h3></div>
+        </article>
+        <article class="plate p2">
+          <div class="art"></div>
+          <div class="content"><span class="num">02</span></div>
+          <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
+          <div class="content bottom"><span class="fmt">TikTok · Moda</span><h3>Try-on haul</h3></div>
+        </article>
+        <article class="plate p3">
+          <div class="art"></div>
+          <div class="content"><span class="num">03</span></div>
+          <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
+          <div class="content bottom"><span class="fmt">Reel · Beauty box</span><h3>Unboxing</h3></div>
+        </article>
+        <article class="plate p4">
+          <div class="art"></div>
+          <div class="content"><span class="num">04</span></div>
+          <div class="content bottom"><span class="fmt">Foto · Producto</span><h3>Flat lay</h3></div>
+        </article>
+        <article class="plate p5">
+          <div class="art"></div>
+          <div class="content"><span class="num">05</span></div>
+          <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
+          <div class="content bottom"><span class="fmt">TikTok · Reseña</span><h3>Testimonio honesto</h3></div>
+        </article>
+        <article class="plate p6">
+          <div class="art"></div>
+          <div class="content"><span class="num">06</span></div>
+          <div class="play"><svg viewBox="0 0 10 10" fill="none"><path d="M1 0.5L9 5L1 9.5V0.5Z" fill="currentColor"/></svg></div>
+          <div class="content bottom"><span class="fmt">Reel · Lifestyle</span><h3>Día en mi vida</h3></div>
+        </article>
+      </div>
+      <p class="portfolio-note">*Espacios de muestra — se reemplazan por tus videos y fotos finales.</p>
+    </div>
+  </section>
+
+  <section id="sobre-mi" style="background:var(--paper-alt)">
+    <div class="wrap about-grid">
+      <div class="about-photo">
+        <span class="crop tl"></span><span class="crop tr"></span>
+        <span class="crop bl"></span><span class="crop br"></span>
+      </div>
+      <div>
+        <p class="eyebrow">Sobre mí</p>
+        <p class="quote">Antes de la cámara siempre hay una historia real que contar.</p>
+        <div class="about-body">
+          <p>Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".</p>
+          <p>Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.</p>
+        </div>
+        <div class="traits">
+          <div class="trait"><span class="mk">→</span> Gancho en los primeros 2 segundos, siempre.</div>
+          <div class="trait"><span class="mk">→</span> Luz natural, edición limpia, cero filtros pesados.</div>
+          <div class="trait"><span class="mk">→</span> Entrega en formato listo para subir, sin ida y vuelta eterno.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Lo que puedo<br>grabar para tu marca.</h2>
+        <p class="sec-note">Cuatro formatos base — se ajustan al brief y al objetivo de cada campaña.</p>
+      </div>
+      <div class="services">
+        <div class="service-row">
+          <span class="idx">01</span>
+          <h3>Video UGC</h3>
+          <p>Reels y TikToks verticales con guion y gancho pensados para tu producto, listos para publicar o usar en pauta.</p>
+        </div>
+        <div class="service-row">
+          <span class="idx">02</span>
+          <h3>Fotografía de producto</h3>
+          <p>Flat lays y fotos en contexto de uso, editadas para feed, ecommerce o ficha de producto.</p>
+        </div>
+        <div class="service-row">
+          <span class="idx">03</span>
+          <h3>Unboxing &amp; reseñas</h3>
+          <p>Reacción real al abrir y probar tu producto — formato cercano, sin guion forzado.</p>
+        </div>
+        <div class="service-row">
+          <span class="idx">04</span>
+          <h3>Contenido para ads</h3>
+          <p>Piezas pensadas para performance y whitelisting: hook, beneficio claro, cierre con CTA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper-alt)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cómo<br>trabajamos.</h2>
+        <p class="sec-note">Cuatro pasos, del brief a los archivos finales en tu carpeta.</p>
+      </div>
+      <div class="process">
+        <div class="step"><span class="idx">01</span><h3>Brief</h3><p>Me cuentas tu marca, el producto y el objetivo del contenido.</p></div>
+        <div class="step"><span class="idx">02</span><h3>Propuesta</h3><p>Te envío ideas de guion y referencias antes de grabar.</p></div>
+        <div class="step"><span class="idx">03</span><h3>Grabación</h3><p>Grabo con buena luz, en casa o donde mejor se vea tu producto.</p></div>
+        <div class="step"><span class="idx">04</span><h3>Entrega</h3><p>Recibes los archivos editados, listos para subir o pautar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contacto</p>
+      <h2>¿Hacemos<br>contenido juntas?</h2>
+      <div class="contact-grid">
+        <a class="mail" href="mailto:info@cammirueda.com">info@cammirueda.com</a>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>© 2026 Cami — Creadora UGC</span>
+    <span>Moda · Belleza · Lifestyle</span>
+  </div>
+</footer>
