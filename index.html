@@ -136,7 +136,7 @@
     padding-top:18px; padding-bottom:18px;
   }
   .navlinks{
-    display:flex; gap:34px;
+    display:flex; gap:clamp(16px,2.3vw,34px);
     font-size:0.92rem;
   }
   .navlinks a{
@@ -324,6 +324,27 @@
   }
   .reel-btn:hover{ background:var(--ink); color:var(--paper); }
 
+  /* ---------- UGC PHOTOS ---------- */
+  .ugc-grid{ display:grid; grid-template-columns:repeat(2, minmax(0, 460px)); gap:clamp(20px,4vw,56px); justify-content:center; }
+  .ugc-card{ margin:0; }
+  .ugc-card:nth-child(2){ margin-top:56px; }
+  .ugc-photo{
+    position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--paper-alt);
+    border:1.5px solid var(--ink); box-shadow:7px 8px 0 color-mix(in srgb, var(--ink) 14%, transparent);
+  }
+  .ugc-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+  .ugc-card:hover .ugc-photo img{ transform:scale(1.03); }
+  .ugc-card figcaption{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-top:18px; }
+  .ugc-brand{ font-weight:700; font-size:1.05rem; }
+  .ugc-tag{
+    font-size:0.72rem; letter-spacing:.12em; text-transform:uppercase; color:#121010;
+    background:var(--pink); border:1px solid #121010; border-radius:999px; padding:5px 12px;
+  }
+  @media (max-width:700px){
+    .ugc-grid{ grid-template-columns:1fr; }
+    .ugc-card:nth-child(2){ margin-top:0; }
+  }
+
   /* ---------- ABOUT ---------- */
   .about-grid{
     display:grid; grid-template-columns:0.7fr 1.3fr; gap:clamp(28px,5vw,72px);
@@ -502,6 +523,7 @@
   <nav class="wrap">
     <div class="navlinks">
       <a href="#portafolio" data-i18n="navWork">Trabajos</a>
+      <a href="#fotos" data-i18n="navPhotos">Fotos</a>
       <a href="#servicios" data-i18n="navServices">Servicios</a>
       <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
       <a href="#equipo" data-i18n="navGear">Equipo</a>
@@ -648,6 +670,25 @@
           <button class="reel-btn" id="reel-prev" type="button" aria-label="Anterior">←</button>
           <button class="reel-btn" id="reel-next" type="button" aria-label="Siguiente">→</button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fotos" style="background:var(--paper-alt)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="ugcTitle">Fotos UGC<br>con producto.</h2>
+        <p class="sec-note" data-i18n="ugcNote">Producto en mano, luz natural y cara real: fotos listas para feed, ecommerce o anuncios.</p>
+      </div>
+      <div class="ugc-grid">
+        <figure class="ugc-card">
+          <div class="ugc-photo"><img src="media/photos/ugc/solinia-1.jpg" alt="Cami sosteniendo el Magnesium Sleep Butter de Solinia junto a su cara" width="1200" height="1600" loading="lazy"></div>
+          <figcaption><span class="ugc-brand">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="ugcTag1">Foto UGC · Bienestar</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <div class="ugc-photo"><img src="media/photos/ugc/solinia-2.jpg" alt="Cami sonriendo y mostrando el Magnesium Sleep Butter de Solinia" width="1200" height="1600" loading="lazy"></div>
+          <figcaption><span class="ugc-brand">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="ugcTag2">Foto UGC · Producto</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -813,6 +854,10 @@
       navAbout: "Sobre mí",
       navContact: "Contacto",
       navCta: "Trabajemos juntos",
+      navPhotos: "Fotos",
+      ugcTitle: `Fotos UGC<br>con producto.`,
+      ugcNote: "Producto en mano, luz natural y cara real: fotos listas para feed, ecommerce o anuncios.",
+      ugcTag1: "Foto UGC · Bienestar", ugcTag2: "Foto UGC · Producto",
       navGear: "Equipo",
       fAll: "Todos", fBeauty: "Belleza", fFashion: "Moda", fLifestyle: "Lifestyle", fStory: "Storytelling", fFood: "Healthy food", fFitness: "Fitness", fReview: "Reviews",
       navSocial: "Redes",
@@ -877,6 +922,10 @@
       navAbout: "About",
       navContact: "Contact",
       navCta: "Let's work together",
+      navPhotos: "Photos",
+      ugcTitle: `UGC photos<br>with product.`,
+      ugcNote: "Product in hand, natural light and a real face: photos ready for feed, ecommerce or ads.",
+      ugcTag1: "UGC photo · Wellness", ugcTag2: "UGC photo · Product",
       navGear: "Gear",
       fAll: "All", fBeauty: "Beauty", fFashion: "Fashion", fLifestyle: "Lifestyle", fStory: "Storytelling", fFood: "Healthy food", fFitness: "Fitness", fReview: "Reviews",
       navSocial: "Social",
