@@ -10,18 +10,17 @@
 
 <style>
   :root{
-    --paper:      #FBF6EE;
-    --paper-alt:  #F3EADD;
+    --paper:      #F1F2EA;
+    --paper-alt:  #E6E5D9;
     --ink:        #121010;
     --ink-soft:   #4C4644;
     --line:       rgba(18,16,16,0.16);
     --accent:     #D6408A;
     --accent-ink: #FFFFFF;
     --accent-soft:#FFC0DA;
-    --lavender:   #D8AADB;
+    --lavender:   #C9C3DA;
     --clay:       #E9C29B;
     --clay-soft:  #FBE7D3;
-    --yellow:     #FFE94D;
     --pink:       #FFC0DA;
     --g1:         #CF9BD3;
     --g2:         #F3B7D8;
@@ -31,18 +30,17 @@
 
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:      #17131A;
-      --paper-alt:  #211B25;
+      --paper:      #16150F;
+      --paper-alt:  #201F17;
       --ink:        #F7F0E9;
       --ink-soft:   #C2B7BB;
       --line:       rgba(247,240,233,0.16);
       --accent:     #FF8FC2;
       --accent-ink: #2A0F1D;
       --accent-soft:#4A2340;
-      --lavender:   #47325A;
+      --lavender:   #2E2A3F;
       --clay:       #E7B892;
       --clay-soft:  #33271F;
-      --yellow:     #FFE94D;
       --pink:       #FFC0DA;
       --g1:         #4B3559;
       --g2:         #6A3F5F;
@@ -51,18 +49,17 @@
     }
   }
   :root[data-theme="dark"]{
-    --paper:      #17131A;
-    --paper-alt:  #211B25;
+    --paper:      #16150F;
+    --paper-alt:  #201F17;
     --ink:        #F7F0E9;
     --ink-soft:   #C2B7BB;
     --line:       rgba(247,240,233,0.16);
     --accent:     #FF8FC2;
     --accent-ink: #2A0F1D;
     --accent-soft:#4A2340;
-    --lavender:   #47325A;
+    --lavender:   #2E2A3F;
     --clay:       #E7B892;
     --clay-soft:  #33271F;
-    --yellow:     #FFE94D;
     --pink:       #FFC0DA;
     --g1:         #4B3559;
     --g2:         #6A3F5F;
@@ -103,10 +100,9 @@
   em, i.acc{
     font-family:"Playfair Display", Georgia, "Times New Roman", serif;
     font-style:italic; font-weight:500; letter-spacing:-0.01em;
-    color:#121010; background:var(--yellow); padding:0 .14em;
-    -webkit-box-decoration-break:clone; box-decoration-break:clone;
+    color:var(--accent);
   }
-  p i.acc{ background:none; color:var(--ink); padding:0; font-size:1.06em; }
+  p i.acc{ color:var(--ink); font-size:1.06em; }
 
   a{ color:inherit; }
 
@@ -191,7 +187,7 @@
   /* ---------- HERO ---------- */
   .hero{
     padding:72px 0 40px;
-    background:linear-gradient(180deg, var(--g1) 0%, var(--g2) 55%, var(--g3) 100%);
+    background:var(--lavender);
   }
   .hero-grid{
     display:grid;
@@ -452,11 +448,11 @@
 
   /* ---------- CONTACT ---------- */
   .contact{
-    background:linear-gradient(180deg, var(--g1) 0%, var(--g2) 55%, var(--g3) 100%);
-    color:var(--ink); text-align:center;
+    background:var(--ink); color:var(--paper); text-align:center;
   }
-  .contact .eyebrow{ color:var(--ink-soft); justify-content:center; }
-  .contact .eyebrow::before{ background:var(--accent); }
+  .contact .eyebrow{ color:color-mix(in srgb, var(--paper) 65%, transparent); justify-content:center; }
+  .contact .eyebrow::before{ background:var(--clay); }
+  .contact i.acc{ color:inherit; }
   .contact h2{
     font-size:clamp(2.6rem,7vw,5.6rem); margin:20px 0 34px; text-wrap:balance; line-height:1.05;
   }
