@@ -935,6 +935,13 @@
   });
 })();
 
+function releaseVideo(video, plate){
+  video.pause();
+  video.muted = true;
+  plate.classList.remove("is-playing");
+  if(video.readyState > 0){ video.load(); }
+}
+
 (function(){
   var plates = document.querySelectorAll(".plate");
   plates.forEach(function(plate){
@@ -944,17 +951,24 @@
       if(video.paused){
         plates.forEach(function(other){
           var otherVideo = other.querySelector("video");
-          if(otherVideo && otherVideo !== video){ otherVideo.pause(); otherVideo.muted = true; other.classList.remove("is-playing"); }
+          if(otherVideo && otherVideo !== video){ releaseVideo(otherVideo, other); }
         });
         video.muted = false;
-        video.currentTime = 0;
-        video.play();
         plate.classList.add("is-playing");
+        var started = video.play();
+        if(started && started.catch){
+          started.catch(function(){
+            video.muted = true;
+            var retry = video.play();
+            if(retry && retry.catch){ retry.catch(function(){ plate.classList.remove("is-playing"); }); }
+          });
+        }
       } else {
         video.pause();
         plate.classList.remove("is-playing");
       }
     });
+    video.addEventListener("error", function(){ plate.classList.remove("is-playing"); });
     video.addEventListener("ended", function(){
       plate.classList.remove("is-playing");
       video.muted = true;
@@ -1004,7 +1018,7 @@
       var i = 0;
       plates.forEach(function(pl){
         var v = pl.querySelector("video");
-        if(v){ v.pause(); v.muted = true; pl.classList.remove("is-playing"); }
+        if(v){ releaseVideo(v, pl); }
         var show = has(pl, f);
         pl.hidden = !show;
         if(show){ i++; pl.querySelector(".num").textContent = (i < 10 ? "0" : "") + i; }
