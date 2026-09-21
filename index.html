@@ -333,6 +333,15 @@
     line-height:1.3; margin-bottom:26px;
   }
   .about-body p{ color:var(--ink-soft); max-width:62ch; margin:0 0 16px; }
+  .about-body a.ig-link{
+    color:var(--ink); text-decoration:none; font-weight:700; white-space:nowrap;
+    background:linear-gradient(var(--accent), var(--accent)) 0 100% / 100% 2px no-repeat;
+    padding-bottom:1px; transition:background-size .2s ease, color .2s ease;
+  }
+  .about-body a.ig-link::after{ content:" ↗"; font-size:.85em; }
+  .about-body a.ig-link:hover, .about-body a.ig-link:focus-visible{
+    background-size:100% 100%; color:var(--accent-ink);
+  }
   .traits{
     margin-top:32px; display:grid; gap:14px;
     border-top:1px solid var(--line); padding-top:26px;
@@ -636,8 +645,8 @@
         <p class="eyebrow" data-i18n="aboutEyebrow">Sobre mí</p>
         <p class="quote" data-i18n="aboutQuote">Antes de la cámara siempre hay una historia real que contar.</p>
         <div class="about-body">
-          <p data-i18n="aboutP1">Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".</p>
-          <p data-i18n="aboutP2">Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.</p>
+          <p data-i18n="aboutP1">Amo el deporte y el estilo de vida sana, creo que es una de las claves para ser una persona feliz. Ahora mismo estoy metida en el mundo del running (corro mi primera maratón en enero). Me gusta mucho el gym, pero realmente amo el deporte en general. Amo la música, cocinar y la moda y todo lo que sea cuidarse.</p>
+          <p data-i18n="aboutP2">Me he dedicado durante un par de años a llevar redes sociales para otros negocios y a día de hoy manejo la red social de un estudio de tatuajes (<a class="ig-link" href="https://www.instagram.com/hoomu.studio" target="_blank" rel="noopener">instagram.com/hoomu.studio</a>) y también creo el contenido de <a class="ig-link" href="https://www.instagram.com/alextorrsss" target="_blank" rel="noopener">instagram.com/alextorrsss</a>.</p>
         </div>
         <div class="traits">
           <div class="trait"><span class="mk">→</span> <span data-i18n="trait1">Gancho en los primeros 2 segundos, siempre.</span></div>
@@ -820,8 +829,8 @@
       portfolioNote2: "*Se desliza solo; pasa el cursor para pausar. Haz clic en un video para verlo con sonido.",
       aboutEyebrow: "Sobre mí",
       aboutQuote: "Antes de la cámara siempre hay una historia real que contar.",
-      aboutP1: `Soy Cami. Creo contenido para marcas de moda, belleza y estilo de vida, y lo que más me gusta es encontrar el momento honesto dentro de cada producto: la textura, la reacción real, el detalle que hace que alguien piense "yo también lo quiero".`,
-      aboutP2: "Trabajo directo con la marca o dentro de campañas de UGC para pauta, y entrego contenido listo para publicar — vertical, con buena luz y sin relleno.",
+      aboutP1: `Amo el deporte y el estilo de vida sana, creo que es una de las claves para ser una persona feliz. Ahora mismo estoy metida en el mundo del running (corro mi primera maratón en enero). Me gusta mucho el gym, pero realmente amo el deporte en general. Amo la música, cocinar y la moda y todo lo que sea cuidarse.`,
+      aboutP2: `Me he dedicado durante un par de años a llevar redes sociales para otros negocios y a día de hoy manejo la red social de un estudio de tatuajes (<a class="ig-link" href="https://www.instagram.com/hoomu.studio" target="_blank" rel="noopener">instagram.com/hoomu.studio</a>) y también creo el contenido de <a class="ig-link" href="https://www.instagram.com/alextorrsss" target="_blank" rel="noopener">instagram.com/alextorrsss</a>.`,
       trait1: "Gancho en los primeros 2 segundos, siempre.",
       trait2: "Luz natural, edición limpia, cero filtros pesados.",
       trait3: "Entrega en formato listo para subir, sin ida y vuelta eterno.",
@@ -884,8 +893,8 @@
       portfolioNote2: "*It slides on its own; hover to pause. Click a video to watch it with sound.",
       aboutEyebrow: "About me",
       aboutQuote: "Before the camera, there's always a real story to tell.",
-      aboutP1: `I'm Cami. I create content for fashion, beauty and lifestyle brands, and what I love most is finding the honest moment inside every product: the texture, the real reaction, the detail that makes someone think "I want that too".`,
-      aboutP2: "I work directly with brands or inside paid UGC campaigns, and deliver content ready to post — vertical, well lit, no filler.",
+      aboutP1: `I love sports and a healthy lifestyle — I believe it's one of the keys to being a happy person. Right now I'm deep into running (I'm running my first marathon in January). I really enjoy the gym, but honestly I love sports in general. I love music, cooking, fashion and anything to do with taking care of yourself.`,
+      aboutP2: `For a couple of years I've been managing social media for other businesses, and today I run the social media of a tattoo studio (<a class="ig-link" href="https://www.instagram.com/hoomu.studio" target="_blank" rel="noopener">instagram.com/hoomu.studio</a>) and I also create the content for <a class="ig-link" href="https://www.instagram.com/alextorrsss" target="_blank" rel="noopener">instagram.com/alextorrsss</a>.`,
       trait1: "A hook in the first 2 seconds, always.",
       trait2: "Natural light, clean editing, zero heavy filters.",
       trait3: "Delivered ready to upload — no endless back-and-forth.",
