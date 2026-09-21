@@ -325,25 +325,24 @@
   .reel-btn:hover{ background:var(--ink); color:var(--paper); }
 
   /* ---------- UGC PHOTOS ---------- */
-  .ugc-grid{ display:grid; grid-template-columns:repeat(2, minmax(0, 460px)); gap:clamp(20px,4vw,56px); justify-content:center; }
-  .ugc-card{ margin:0; }
-  .ugc-card:nth-child(2){ margin-top:56px; }
+  .ugc-filters{ display:flex; flex-wrap:wrap; gap:10px; margin:-14px 0 30px; }
+  .ugc-grid{ column-count:3; column-gap:clamp(16px,2.4vw,32px); }
+  .ugc-card{ margin:0 0 clamp(16px,2.4vw,32px); break-inside:avoid; }
+  .ugc-card[hidden]{ display:none; }
   .ugc-photo{
-    position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--paper-alt);
-    border:1.5px solid var(--ink); box-shadow:7px 8px 0 color-mix(in srgb, var(--ink) 14%, transparent);
+    overflow:hidden; background:var(--paper);
+    border:1.5px solid var(--ink); box-shadow:6px 7px 0 color-mix(in srgb, var(--ink) 14%, transparent);
   }
-  .ugc-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+  .ugc-photo img{ width:100%; height:auto; display:block; transition:transform .6s ease; }
   .ugc-card:hover .ugc-photo img{ transform:scale(1.03); }
-  .ugc-card figcaption{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-top:18px; }
-  .ugc-brand{ font-weight:700; font-size:1.05rem; }
+  .ugc-card figcaption{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; margin-top:14px; }
+  .ugc-brand{ font-weight:700; font-size:0.98rem; }
   .ugc-tag{
-    font-size:0.72rem; letter-spacing:.12em; text-transform:uppercase; color:#121010;
-    background:var(--pink); border:1px solid #121010; border-radius:999px; padding:5px 12px;
+    font-size:0.68rem; letter-spacing:.12em; text-transform:uppercase; color:#121010;
+    background:var(--pink); border:1px solid #121010; border-radius:999px; padding:4px 11px;
   }
-  @media (max-width:700px){
-    .ugc-grid{ grid-template-columns:1fr; }
-    .ugc-card:nth-child(2){ margin-top:0; }
-  }
+  @media (max-width:900px){ .ugc-grid{ column-count:2; } }
+  @media (max-width:520px){ .ugc-grid{ column-count:1; } }
 
   /* ---------- ABOUT ---------- */
   .about-grid{
@@ -677,17 +676,63 @@
   <section id="fotos" style="background:var(--paper-alt)">
     <div class="wrap">
       <div class="sec-head">
-        <h2 data-i18n="ugcTitle">Fotos UGC<br>con producto.</h2>
-        <p class="sec-note" data-i18n="ugcNote">Producto en mano, luz natural y cara real: fotos listas para feed, ecommerce o anuncios.</p>
+        <h2 data-i18n="ugcTitle">Fotos UGC<br>listas para usar.</h2>
+        <p class="sec-note" data-i18n="ugcNote">Producto en mano, espacios y comida con luz natural: fotos listas para feed, ecommerce o anuncios.</p>
+      </div>
+      <div class="ugc-filters" role="group" aria-label="Filtrar por categoría">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true"><span data-i18n="fAll">Todos</span><span class="cnt"></span></button>
+        <button class="chip" type="button" data-filter="product" aria-pressed="false"><span data-i18n="uChipPro">Producto</span><span class="cnt"></span></button>
+        <button class="chip" type="button" data-filter="studio" aria-pressed="false"><span data-i18n="uChipStudio">Estudio</span><span class="cnt"></span></button>
+        <button class="chip" type="button" data-filter="restaurants" aria-pressed="false"><span data-i18n="uChipRest">Restaurantes</span><span class="cnt"></span></button>
       </div>
       <div class="ugc-grid">
-        <figure class="ugc-card">
+        <figure class="ugc-card" data-cat="product">
           <div class="ugc-photo"><img src="media/photos/ugc/solinia-1.jpg" alt="Cami sosteniendo el Magnesium Sleep Butter de Solinia junto a su cara" width="1200" height="1600" loading="lazy"></div>
-          <figcaption><span class="ugc-brand">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="ugcTag1">Foto UGC · Bienestar</span></figcaption>
+          <figcaption><span class="ugc-brand" data-i18n="u1t">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="uTagPro">Foto UGC · Producto</span></figcaption>
         </figure>
-        <figure class="ugc-card">
+        <figure class="ugc-card" data-cat="studio">
+          <div class="ugc-photo"><img src="media/photos/ugc/studio-1.jpg" alt="Tatuador sentado y clienta de pie en un estudio luminoso" width="933" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u2t">Ambiente de estudio</span><span class="ugc-tag" data-i18n="uTagStudio">Estudio</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/food-1.jpg" alt="Tabla de quesos, embutido y pan con una copa de vino" width="1400" height="933" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u3t">Tabla de quesos y pan</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="product">
           <div class="ugc-photo"><img src="media/photos/ugc/solinia-2.jpg" alt="Cami sonriendo y mostrando el Magnesium Sleep Butter de Solinia" width="1200" height="1600" loading="lazy"></div>
-          <figcaption><span class="ugc-brand">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="ugcTag2">Foto UGC · Producto</span></figcaption>
+          <figcaption><span class="ugc-brand" data-i18n="u4t">Solinia · Magnesium Sleep Butter</span><span class="ugc-tag" data-i18n="uTagPro">Foto UGC · Producto</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="studio">
+          <div class="ugc-photo"><img src="media/photos/ugc/studio-2.jpg" alt="Persona colocando flores en una estantería con plantas junto a la ventana" width="788" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u5t">Rincón de plantas</span><span class="ugc-tag" data-i18n="uTagStudio">Estudio</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/bar-1.jpg" alt="Lámpara encendida sobre un barril en una terraza" width="933" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u6t">Luz cálida</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="studio">
+          <div class="ugc-photo"><img src="media/photos/ugc/studio-3.jpg" alt="Dos personas conversando junto a una camilla frente a una ventana" width="788" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u7t">Sesión en el estudio</span><span class="ugc-tag" data-i18n="uTagStudio">Estudio</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/food-2.jpg" alt="Bandeja de carnes y espárragos para parrilla" width="1050" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u8t">Parrilla de carnes</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/bar-2.jpg" alt="Sillas y mesa de una terraza con luces cálidas" width="933" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u9t">Terraza</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="studio">
+          <div class="ugc-photo"><img src="media/photos/ugc/studio-4.jpg" alt="Mesa de centro con libros, flores y plantas" width="933" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u10t">Rincón de descanso</span><span class="ugc-tag" data-i18n="uTagStudio">Estudio</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/food-3.jpg" alt="Plato con croquetas cubiertas de bonito y alga" width="1050" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u11t">Plato japonés</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
+        </figure>
+        <figure class="ugc-card" data-cat="restaurants">
+          <div class="ugc-photo"><img src="media/photos/ugc/bar-3.jpg" alt="Dos copas de vino sobre una mesa de cristal" width="933" height="1400" loading="lazy"></div>
+          <figcaption><span class="ugc-brand" data-i18n="u12t">Copas al atardecer</span><span class="ugc-tag" data-i18n="uTagRest">Restaurantes</span></figcaption>
         </figure>
       </div>
     </div>
@@ -855,9 +900,13 @@
       navContact: "Contacto",
       navCta: "Trabajemos juntos",
       navPhotos: "Fotos",
-      ugcTitle: `Fotos UGC<br>con producto.`,
-      ugcNote: "Producto en mano, luz natural y cara real: fotos listas para feed, ecommerce o anuncios.",
-      ugcTag1: "Foto UGC · Bienestar", ugcTag2: "Foto UGC · Producto",
+      ugcTitle: `Fotos UGC<br>listas para usar.`,
+      ugcNote: "Producto en mano, espacios y comida con luz natural: fotos listas para feed, ecommerce o anuncios.",
+      u1t: "Solinia · Magnesium Sleep Butter", u2t: "Ambiente de estudio", u3t: "Tabla de quesos y pan",
+      u4t: "Solinia · Magnesium Sleep Butter", u5t: "Rincón de plantas", u6t: "Luz cálida",
+      u7t: "Sesión en el estudio", u8t: "Parrilla de carnes", u9t: "Terraza",
+      u10t: "Rincón de descanso", u11t: "Plato japonés", u12t: "Copas al atardecer",
+      uTagPro: "Foto UGC · Producto", uTagStudio: "Estudio", uTagRest: "Restaurantes", uChipPro: "Producto", uChipStudio: "Estudio", uChipRest: "Restaurantes",
       navGear: "Equipo",
       fAll: "Todos", fBeauty: "Belleza", fFashion: "Moda", fLifestyle: "Lifestyle", fStory: "Storytelling", fFood: "Healthy food", fFitness: "Fitness", fReview: "Reviews",
       navSocial: "Redes",
@@ -923,9 +972,13 @@
       navContact: "Contact",
       navCta: "Let's work together",
       navPhotos: "Photos",
-      ugcTitle: `UGC photos<br>with product.`,
-      ugcNote: "Product in hand, natural light and a real face: photos ready for feed, ecommerce or ads.",
-      ugcTag1: "UGC photo · Wellness", ugcTag2: "UGC photo · Product",
+      ugcTitle: `UGC photos<br>ready to use.`,
+      ugcNote: "Product in hand, spaces and food in natural light: photos ready for feed, ecommerce or ads.",
+      u1t: "Solinia · Magnesium Sleep Butter", u2t: "Studio scene", u3t: "Cheese & bread board",
+      u4t: "Solinia · Magnesium Sleep Butter", u5t: "Plant corner", u6t: "Warm light",
+      u7t: "Session at the studio", u8t: "BBQ spread", u9t: "Patio",
+      u10t: "Lounge corner", u11t: "Japanese dish", u12t: "Wine at dusk",
+      uTagPro: "UGC photo · Product", uTagStudio: "Studio", uTagRest: "Restaurants", uChipPro: "Product", uChipStudio: "Studio", uChipRest: "Restaurants",
       navGear: "Gear",
       fAll: "All", fBeauty: "Beauty", fFashion: "Fashion", fLifestyle: "Lifestyle", fStory: "Storytelling", fFood: "Healthy food", fFitness: "Fitness", fReview: "Reviews",
       navSocial: "Social",
@@ -996,7 +1049,7 @@
     var toggle = document.getElementById("lang-toggle");
     toggle.textContent = dict.langToggle;
     toggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
-    document.querySelector(".reel-filters").setAttribute("aria-label", lang === "es" ? "Filtrar por categoría" : "Filter by category");
+    document.querySelectorAll(".reel-filters, .ugc-filters").forEach(function(g){ g.setAttribute("aria-label", lang === "es" ? "Filtrar por categoría" : "Filter by category"); });
     document.getElementById("reel-prev").setAttribute("aria-label", lang === "es" ? "Anterior" : "Previous");
     document.getElementById("reel-next").setAttribute("aria-label", lang === "es" ? "Siguiente" : "Next");
     try{ localStorage.setItem("cami-portfolio-lang", lang); }catch(e){}
@@ -1101,6 +1154,20 @@ function releaseVideo(video, plate){
         if(show){ i++; pl.querySelector(".num").textContent = (i < 10 ? "0" : "") + i; }
       });
       track.scrollTo({left:0, behavior:"auto"});
+    });
+  });
+})();
+
+(function(){
+  var chips = document.querySelectorAll(".ugc-filters .chip");
+  var cards = document.querySelectorAll(".ugc-card");
+  chips.forEach(function(chip){
+    var f = chip.getAttribute("data-filter");
+    var n = 0; cards.forEach(function(c){ if(f === "all" || c.getAttribute("data-cat") === f) n++; });
+    chip.querySelector(".cnt").textContent = n;
+    chip.addEventListener("click", function(){
+      chips.forEach(function(c){ c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      cards.forEach(function(c){ c.hidden = !(f === "all" || c.getAttribute("data-cat") === f); });
     });
   });
 })();
